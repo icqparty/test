@@ -1,0 +1,27 @@
+<?php include 'header.phtml'; ?>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>create_date</th>
+            </thead>
+            <tbody id="result">
+            <?php if(@$items):?>
+                <?php foreach ($items as $item): ?>
+                    <tr>
+                        <td><?php echo $item['id']; ?></td>
+                        <td><?php echo $item['display_name']; ?></td>
+                        <td><?php echo $item['email']; ?></td>
+                        <td><?php echo $item['create_date']; ?></td>
+                    </tr>
+                <?php endforeach ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php include 'footer.phtml'; ?>

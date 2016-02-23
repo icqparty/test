@@ -1,0 +1,36 @@
+<?php //var_dump(@$items)?>
+<?php if (!empty($items)): ?>
+
+    <?php foreach ($items as $key => $parser): ?>
+        <tr>
+            <td><?php echo $parser['id'] ?></td>
+            <td><?php echo $parser['header'] ?></td>
+            <td><?php echo $parser['type'] ?></td>
+            <td><?php echo $parser['param'] ?></td>
+            <td><?php echo $parser['status'] ?> <?php echo empty($parser['pid'])?"":"({$parser['pid']})" ?> <?php echo $parser['status_p']?"Активен":"Не активен"?></td>
+            <td><a href="/parser/export/id/<?php echo $parser['id']; ?>" class="btn btn-info">просмотр</a></td>
+            <td><?php echo $parser['count']; ?>   <sup class="text-muted"><?php echo $count; ?></sup></td>
+            <td>
+                <button id_parser="<?php echo @$parser['id'] ?>" action="delete"
+                        class="btn btn-default delete_action_parser"><i
+                        class="glyphicon glyphicon-remove"></i> Удалить
+                </button>
+
+                        <?php if ($parser['status_p']): ?>
+                        <button id_parser="<?php echo $parser['id'] ?>" action_parser="stop"
+                                class="btn action_status_parser btn-danger">
+                            <i
+                                class="glyphicon glyphicon-stop"></i> Стоп
+                        </button>
+                        <?php elseif(!$parser['status_p']):?>
+                        <button id_parser="<?php echo $parser['id'] ?>" action_parser="start"
+                                class="btn action_status_parser btn-info">
+                            <i
+                                class="glyphicon glyphicon-play"></i> Старт
+                        </button>
+                        <?php endif?>
+
+            </td>
+        </tr>
+    <?php endforeach ?>
+<?php endif ?>
